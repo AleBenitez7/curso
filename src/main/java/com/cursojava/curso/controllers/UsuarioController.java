@@ -7,6 +7,7 @@ import com.cursojava.curso.models.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class UsuarioController {
         return usuario;
     }
 
-    @RequestMapping(value = "usuarios")
+    @RequestMapping(value = "usuarios")//2.56.10
     public List<Usuario> getUsuarios(){
         return usuarioDao.getUsuarios();
     }
@@ -37,5 +38,10 @@ public class UsuarioController {
     public void deleteUsuario(@PathVariable Long id){
         
         usuarioDao.deleteUsuario(id);
+    }
+
+    @RequestMapping(value = "usuarios", method = RequestMethod.POST)
+    public void registrarUsuarios(@RequestBody Usuario usuario){
+        usuarioDao.registrar(usuario);
     }
 }

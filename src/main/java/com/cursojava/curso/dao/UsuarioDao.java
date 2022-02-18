@@ -5,4 +5,7 @@ import com.cursojava.curso.models.Usuario;
 public interface UsuarioDao {
     List<Usuario> getUsuarios();
     void deleteUsuario(Long id);
+    
+    void registrar(Usuario usuario);
+    
 }
